@@ -1,51 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
 
-    <link href="/dist/output.css" rel="stylesheet" />
-    <link rel="stylesheet" href="00.css" />
+        <link href="/dist/output.css" rel="stylesheet" />
+        <link rel="stylesheet" href="00.css" />
+    </head>
+    <body>
+        <div class="flex w-full h-12 justify-center items-center text-2xl">
+            <p class="">Todo List</p>
+        </div>
 
-    <link
-      href="https://fonts.googleapis.com/css?family=Microsoft+JhengHei"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="flex w-full h-12 justify-center items-center text-2xl">
-      <p class="">Todo List</p>
-    </div>
+        <div class="w-full h-16 justify-end items-center flex mt-16">
+            <input type="text" id="addMemo_Input" class="w-1/5 h-10" />
 
-    <div class="w-full h-16 justify-end items-center flex mt-16">
-      <input type="text" id="addMemo_Input" class="w-1/5 h-10" />
+            <button id="addMemo_Button" class="w-10 h-10 bg-lime-300 mr-20">
+                <b>+</b>
+            </button>
+        </div>
 
-      <button id="addMemo_Button" class="w-10 h-10 bg-lime-300 mr-20">
-        <b>+</b>
-      </button>
-    </div>
+        <div id="List" class="flex w-full h-full m-10"></div>
 
-    <div id="deleteMemo"></div>
+        <script>
+			/** @type {HTMLDivElement} */
+			
+            document.querySelector("#addMemo_Button").addEventListener("click", function () {
+                AddTodo();
+            });
 
-    <script>
-      document
-        .querySelector("#addMemo_Button")
-        .addEventListener("click", function () {
-          AddTodo();
-        });
+			// 刪除 Memo
+			// event 是事件物件，可以自訂名稱
+			document.querySelector('#List').addEventListener('click', function(event){
+				// target代表觸發事件的元素
+				const target = event.target;
 
-      function AddTodo() {
-        const TodoValue = document.querySelector("#addMemo_Input").value;
+				// 如果 target 是 .delete （List監聽所有點擊，但只有點到 delete 才自毀）	
+				if (target.classList.contains('delete')) {
+					target.parentNode.parentNode.remove();
+				}
+			});
 
-        // 如果沒東西
-        if (TodoValue == "") {
-        	return;
-        }
+            function AddTodo() {
+                const TodoValue = document.querySelector("#addMemo_Input").value;
 
-        console.log(TodoValue);
-      }
-    </script>
-  </body>
+                // 如果沒東西，就中斷
+                if (TodoValue == "") {
+                    return;
+                }
+
+                let newMemo = document.createElement("Memo");
+                newMemo.classList.add("memo");
+
+                //不用單引號會報錯
+                newMemo.innerHTML = '<div class="deleteDIV"><button id="deleteMemo_Button" class="delete"> X </button></div><p style="margin: 5%;">' + TodoValue + "</p>";
+
+                console.log(TodoValue);
+
+                document.querySelector("#List").appendChild(newMemo);
+            }
+        </script>
+    </body>
 </html>
