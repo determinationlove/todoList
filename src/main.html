@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link href="/dist/output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="00.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Microsoft+JhengHei"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="flex w-full h-12 justify-center items-center text-2xl">
+      <p class="">Todo List</p>
+    </div>
+
+    <div class="w-full h-16 justify-end items-center flex mt-16">
+      <input type="text" id="addMemo_Input" class="w-1/5 h-10" />
+
+      <button id="addMemo_Button" class="w-10 h-10 bg-lime-300 mr-20">
+        <b>+</b>
+      </button>
+    </div>
+
+    <div id="deleteMemo"></div>
+
+    <script>
+      document
+        .querySelector("#addMemo_Button")
+        .addEventListener("click", function () {
+          AddTodo();
+        });
+
+      function AddTodo() {
+        const TodoValue = document.querySelector("#addMemo_Input").value;
+
+        // 如果沒東西
+        if (TodoValue == "") {
+        	return;
+        }
+
+        console.log(TodoValue);
+      }
+    </script>
+  </body>
+</html>
