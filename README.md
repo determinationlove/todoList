@@ -1,4 +1,4 @@
 # todoList
  study
 
- page:
+ page: https://determinationlove.github.io/todoList/
