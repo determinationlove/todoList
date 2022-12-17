@@ -2,5 +2,9 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.8",
     "tailwindcss": "^3.2.4"
+  },
+  "scripts": {
+    "dev": "TAILWIND_MODE=watch postcss -i tailwind.css -o build.css --watch",
+    "build": "postcss -i tailwind.css -o build.css --minify"
   }
 }

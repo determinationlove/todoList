@@ -8,40 +8,42 @@
 
         <link href="/dist/output.css" rel="stylesheet" />
         <link rel="stylesheet" href="00.css" />
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
     </head>
     <body>
-        <div class="flex w-full h-12 justify-center items-center text-2xl">
-            <p class="">Todo List</p>
+        <div class="flex flex-col w-full h-full relative">
+            <div class="flex w-full h-12 justify-center items-center text-2xl">
+                <p class="">Todo List</p>
+            </div>
+
+            <div class="w-full h-16 justify-end items-center flex mt-16">
+                <input type="text" id="addMemo_Input" class="w-1/5 h-10" />
+
+                <button id="addMemo_Button" class="w-10 h-10 bg-lime-300 mr-20">
+                    <b>+</b>
+                </button>
+            </div>
+
+            <div id="List" class="flex flex-wrap w-full h-full max-w-full p-10"></div>
         </div>
-
-        <div class="w-full h-16 justify-end items-center flex mt-16">
-            <input type="text" id="addMemo_Input" class="w-1/5 h-10" />
-
-            <button id="addMemo_Button" class="w-10 h-10 bg-lime-300 mr-20">
-                <b>+</b>
-            </button>
-        </div>
-
-        <div id="List" class="flex flex-wrap w-full h-full m-10 overflow-x-hidden"></div>
 
         <script>
-			/** @type {HTMLDivElement} */
-			
             document.querySelector("#addMemo_Button").addEventListener("click", function () {
                 AddTodo();
             });
 
-			// 刪除 Memo
-			// event 是事件物件，可以自訂名稱
-			document.querySelector('#List').addEventListener('click', function(event){
-				// target代表觸發事件的元素
-				const target = event.target;
+            // 刪除 Memo
+            // event 是事件物件，可以自訂名稱
+            document.querySelector("#List").addEventListener("click", function (event) {
+                // target代表觸發事件的元素
+                const target = event.target;
 
-				// 如果 target 是 .delete （List監聽所有點擊，但只有點到 delete 才自毀）	
-				if (target.classList.contains('delete')) {
-					target.parentNode.parentNode.remove();
-				}
-			});
+                // 如果 target 是 .delete （List監聽所有點擊，但只有點到 delete 才自毀）
+                if (target.classList.contains("delete")) {
+                    target.parentNode.parentNode.remove();
+                }
+            });
 
             function AddTodo() {
                 const TodoValue = document.querySelector("#addMemo_Input").value;

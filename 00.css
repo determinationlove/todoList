@@ -18,12 +18,13 @@ body {
   display: flex;
   position: relative;
   width: 10rem;
-  height: 12rem;
+  height: fit-content;
+  min-height: 12rem;
+
   background-color: rgb(254 243 199);
   justify-content: center;
   align-items: center;
   margin: 3%;
-  margin-right: 10%;
 
   white-space: pre-wrap;
   word-wrap: break-word;
