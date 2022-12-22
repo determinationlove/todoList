@@ -5,13 +5,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap");
 
 html {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 body {
-    background-color: whitesmoke;
-    margin: 0%;
+  background-color: whitesmoke;
+  margin: 0%;
 }
 
 .memo {
@@ -30,6 +30,7 @@ body {
   word-wrap: break-word;
   word-break: break-all;
 
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .deleteDIV {
@@ -38,10 +39,17 @@ body {
   justify-content: end;
   width: 100%;
   height: 100%;
+
+  color: rgb(255, 255, 255);
+
+  margin-bottom: 10%;
+  margin-left: 10%;
 }
 
 .delete {
+  width: 1.5rem;
+  height: 1.5rem;
   position: absolute;
-  background-color: red;
+  background-color: rgb(255, 120, 120);
   border-radius: 5px;
 }
